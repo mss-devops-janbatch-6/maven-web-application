@@ -11,6 +11,7 @@ node{
     stage('sonarqube report'){
         sh "$mavenHome/bin/mvn sonar:sonar"
     }
+    /*
     //Upload package into Artifact Repository
     stage('Artifact Repository'){
         sh "$mavenHome/bin/mvn deploy"
@@ -21,4 +22,5 @@ node{
   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.84.43:/opt/apache-tomcat-9.0.59/webapps"
     }
     }
+    */
 }//node closing
