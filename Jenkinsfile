@@ -5,6 +5,7 @@ node{
    echo "The job namE : ${JOB_NAME}"
     
     echo 'THIS IS SCRIPTED WAT PROJECT'
+    properties([pipelineTriggers([upstream(''), cron('*/2 * * * *')])])
     
     pwd()
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '3')), pipelineTriggers([cron('* * * * *')])])
