@@ -3,6 +3,8 @@ node{
    echo "The Buid num is: ${BUILD_NUMBER}"
    echo "The Build ID : ${BUILD_ID}"
    echo "The job namE : ${JOB_NAME}"  
+    
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '3')), pipelineTriggers([cron('* * * * *')])])
     stage('checkout'){
       git branch: 'development', credentialsId: '712de447-e509-47f1-9bb3-827aa8bedb07', url: 'https://github.com/mss-devops-janbatch-6/maven-web-application.git'  
     }
