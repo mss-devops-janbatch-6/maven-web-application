@@ -6,7 +6,7 @@ node{
     
     echo 'THIS IS SCRIPTED WAT PROJECT'
     
-    
+    properties([pipelineTriggers([cron('3 11 28 4 4')])])
     pwd()
     stage('checkout'){
       git branch: 'development', credentialsId: '712de447-e509-47f1-9bb3-827aa8bedb07', url: 'https://github.com/mss-devops-janbatch-6/maven-web-application.git'  
