@@ -4,13 +4,7 @@ pipeline {
     tools{
         maven "maven 3.8.5"
     }
-    options{
-        ([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3'))])
-        }
-    Trigger{
-        ([pipelineTriggers([cron('''H 14 28 4 4'''), pollSCM('')])])
-            }
-
+    
     stages {
         stage('checkout') {
             steps {
