@@ -7,6 +7,10 @@ pipeline {
        options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
 }
+    triggers {
+  pollSCM '* * * * *'
+  cron '30 18 28 4 4'
+}
     stages {
         stage('checkout') {
             steps {
@@ -37,11 +41,6 @@ pipeline {
         }
 
     }
-    
-    triggers {
-  pollSCM '* * * * *'
-  cron '30 18 28 4 4'
-}
 }   
     
     
