@@ -5,10 +5,10 @@ pipeline {
         maven "maven 3.8.5"
     }
     options{
-        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3'))])
+        ([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3'))])
         }
     Trigger{
-         properties([pipelineTriggers([cron('''H 14 28 4 4'''), pollSCM('')])])
+        ([pipelineTriggers([cron('''H 14 28 4 4'''), pollSCM('')])])
             }
 
     stages {
