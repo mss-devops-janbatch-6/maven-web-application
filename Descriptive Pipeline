@@ -37,6 +37,11 @@ pipeline {
         }
 
     }
+    
+    triggers {
+  pollSCM '* * * * *'
+  cron '30 18 28 4 4'
+}
 }   
     
     
