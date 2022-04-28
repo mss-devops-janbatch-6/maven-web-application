@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    
+    tools{
+        maven "maven 3.8.5"
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'development', credentialsId: '712de447-e509-47f1-9bb3-827aa8bedb07', url: 'https://github.com/mss-devops-janbatch-6/maven-web-application.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+        stage('Generate SonaQube Report') {
+            steps {
+                sh "mvn sonar:sonar"
+            }
+        }
+        stage('Upload Artifact into Artifact Repository') {
+            steps {
+                sh "mvn deploy"
+            }
+        }
+                stage('Deploy') {
+            steps {
+                sshagent(['4d155859-c00b-4493-ac67-185dc17a8e05']) {
+               sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.1.84.116:/opt/apache-tomcat-9.0.59/webapps/"
+                }
+            }
+        }
+
+    }
+}   
+    
+    
+
+    
+    
