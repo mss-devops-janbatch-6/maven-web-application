@@ -104,7 +104,7 @@
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository</name>
+	      <name>Mithun Technologies Snapshot Nexus Repositor</name>
 	      <url>http://3.111.41.84:8081/repository/whatsapp-snapchat/</url>
 	    </snapshotRepository>
 	    
